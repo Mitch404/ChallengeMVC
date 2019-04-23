@@ -1,0 +1,49 @@
+﻿@model List<string>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Upload CSV";
+}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h3>CSV Email Extraction</h3>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="UploadCSV">
+            <div class="form-group">
+                <label for="fileInput">Upload a .csv file below to extract emails:</label>
+                <input class="form-control-file" type="file" name="file" id="fileInput" />
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Upload" />
+            </div> 
+        </form>
+        <p class="text-danger">@Context.Session.GetString("Error")</p>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>Email Addresses</th>
+                </tr>
+                @foreach (string item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item
+                        </td>
+                    </tr>
+                }    
+            </table>
+        </div>
+    </div>
+}

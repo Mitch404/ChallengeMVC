@@ -1,0 +1,6 @@
+**/bin
+**/obj/Debug
+**/obj/*nuget*
+**/obj/*json
+bin/Debug/*
+obj/Debug/*
